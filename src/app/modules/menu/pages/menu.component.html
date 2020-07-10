@@ -3,7 +3,7 @@
     <li class="nav-item" [ngClass]="{ 'active': dashboard.isActive }">
       <a class="nav-link" routerLink="/dashboard" routerLinkActive #dashboard="routerLinkActive">
         <span class="menu-title">Início</span>
-        <i class="mdi mdi-home menu-icon"></i>
+        <i class="mdi menu-icon mdi-home"></i>
       </a>
     </li>
 <!--    <li class="nav-item" [ngClass]="{ 'active': attendance.isActive }">-->
@@ -30,7 +30,7 @@
       <a class="nav-link" (click)="uiUsersCollapsed = !uiUsersCollapsed" [attr.aria-expanded]="uiUsersCollapsed" aria-controls="ui-usuario">
         <span class="menu-title">Usuário</span>
         <i class="menu-arrow"></i>
-        <i class="mdi mdi-account menu-icon"></i>
+        <i class="mdi menu-icon mdi-account"></i>
       </a>
       <div class="collapse" id="ui-usuario" [ngbCollapse]="!uiUsersCollapsed">
         <ul class="nav flex-column sub-menu">

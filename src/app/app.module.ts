@@ -37,6 +37,8 @@ import { PerfilFormResolver } from './modules/perfil/pages/form/perfil-form.reso
 import { UserFormResolver } from './modules/user/pages/form/user-form.resolver';
 import { DashboardComponent } from './modules/dashboard/pages/dashboard.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { TopGridListComponent } from './core/components/top-grid-list/top-grid-list.component';
+import { ButtonsActionsFormComponent } from './core/components/buttons-actions-form/buttons-actions-form.component';
 
 export function jwtOptionsFactory() {
   return {
@@ -56,6 +58,8 @@ export function jwtOptionsFactory() {
     TemplateComponent,
     LoadingComponent,
     TopComponent,
+    TopGridListComponent,
+    ButtonsActionsFormComponent,
     FooterComponent,
     MenuComponent,
     DashboardComponent,

@@ -14,6 +14,7 @@ export const environment = {
 
   APICatalog: {
     APILogin: APIUrl + 'oauth/token',
+    APIMenu: APIUrl + 'menu',
     APIPerfil: APIUrl + 'perfil',
     APIUser: APIUrl + 'user'
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PerfilService } from '../../service/perfil.service';
 import { Perfil } from '../../domain/perfil';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-list',
@@ -11,7 +12,9 @@ export class PerfilListComponent implements OnInit {
 
   prefilList: Perfil[] = [];
 
-  constructor(private perfilService: PerfilService) {
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private perfilService: PerfilService) {
 
   }
 
@@ -26,6 +29,12 @@ export class PerfilListComponent implements OnInit {
     this.perfilService.findAll().subscribe(res => {
       this.prefilList = res;
     });
+
+  }
+
+  addNewPerfil() {
+
+    this.router.navigate(['./add'], {relativeTo: this.route});
 
   }
 }
