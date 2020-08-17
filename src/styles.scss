@@ -1,1 +1,185 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$cca-primary-color: #265d0c;
+
+$cca-green: (
+        50: $cca-primary-color,
+        100: $cca-primary-color,
+        200: $cca-primary-color,
+        300: $cca-primary-color,
+        400: $cca-primary-color,
+        500: $cca-primary-color,
+        600: $cca-primary-color,
+        700: $cca-primary-color,
+        800: $cca-primary-color,
+        900: $cca-primary-color,
+        A100: $cca-primary-color,
+        A200: $cca-primary-color,
+        A400: $cca-primary-color,
+        A700: $cca-primary-color,
+        contrast: (
+                50: white,
+                100: white,
+                200: white,
+                300: white,
+                400: white,
+                500: white,
+                600: white,
+                700: white,
+                800: white,
+                900: white,
+                A100: white,
+                A200: white,
+                A400: white,
+                A700: white,
+        )
+);
+
+$cca-app-primary: mat-palette($cca-green);
+$cca-app-accent: mat-palette($mat-pink, A200, A100, A400);
+$cca-app-warn:    mat-palette($mat-red);
+
+$cca-app-theme: mat-light-theme((
+        color: (
+                primary: $cca-app-primary,
+                accent: $cca-app-accent,
+                warn: $cca-app-warn,
+        )
+));
+
+@include angular-material-theme($cca-app-theme);
+
+@import "~bootstrap/dist/css/bootstrap.css";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
+.pt-5 {
+   padding-top: 5px;
+}
+
+.div-router-outlet {
+  height: calc(100vh - 135px);
+
+  form {
+    height: 100%;
+
+    mat-card {
+
+      mat-card-content {
+
+        padding-top: 20px;
+
+      }
+
+    }
+  }
+}
+
+.title-card {
+  text-align: center !important;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  padding-top: 10px;
+}
+
+.floating-add-button {
+  position: fixed !important;
+  bottom: 5em !important;
+  right: 4em !important;
+  background-color: $cca-primary-color !important;
+}
+
+
+.table-list {
+  width: 100%;
+
+  th {
+    font-weight: bold;
+
+    &:last-child {
+      width: 160px;
+      text-align: center;
+    }
+  }
+
+  td:last-child {
+    text-align: center;
+  }
+}
+
+.form-cad {
+  width: 100%;
+}
+
+.mat-checkbox-checked .mat-checkbox-background {
+  background-color: $cca-primary-color !important;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: rgba(0, 0, 0, 0.38);
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: $cca-primary-color;
+}
+
+mat-card-header {
+
+  height: 40px;
+
+  .mat-card-header-text {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+}
+
+mat-card-content {
+
+  height: calc(100% - 100px);
+
+  form {
+
+    padding-top: 20px;
+
+  }
+}
+
+mat-card-footer {
+
+  height: 40px;
+
+}
+
+mat-label {
+  font-weight: bold;
+}
+
+button {
+
+  &:focus {
+      outline: 0px dotted !important;
+  }
+
+}
+
+.form-section-checkbox {
+  padding-top: 16px;
+}

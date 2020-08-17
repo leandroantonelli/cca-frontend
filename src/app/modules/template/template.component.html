@@ -1,0 +1,81 @@
+<div class="template">
+
+    <mat-toolbar color="primary" style="position: fixed">
+
+        <div class="menu-title">
+        <button mat-button (click)="drawer.toggle()" style="color: white;">
+            <mat-icon *ngIf="!drawer.opened">menu</mat-icon>
+            <mat-icon *ngIf="drawer.opened">menu_open</mat-icon>
+        </button>
+
+        <strong style="padding-top: 17px;">CCA - Centro de Controle de Animais</strong>
+        </div>
+
+        <div class="fill"></div>
+
+        <button mat-button [matMenuTriggerFor]="menu">
+            {{getUsername()}}&nbsp;
+            <mat-icon>face</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+
+            <button mat-menu-item (click)="showPerfil()">
+                <mat-icon>emoji_people</mat-icon>
+                <span>Perfil</span>
+            </button>
+
+            <button mat-menu-item (click)="logout()">
+                <mat-icon>power_settings_new</mat-icon>
+                <span>Sair</span>
+            </button>
+
+        </mat-menu>
+
+    </mat-toolbar>
+
+    <div style="height: 64px"></div>
+
+    <mat-drawer-container class="full-container">
+
+        <mat-drawer #drawer mode="side" opened="true" disableClose="true">
+
+            <mat-nav-list *ngFor="let menu of menuList">
+
+                <div *ngIf="menu.menuList.length === 0">
+                    <button mat-button routerLink="{{menu.dsRouterLink}}">
+                        <mat-icon>{{menu.dsClassIcon}}</mat-icon>&nbsp;
+                        {{menu.dsMenu}}
+                    </button>
+                </div>
+
+                <div *ngIf="menu.menuList.length > 0">
+                    <button mat-button [matMenuTriggerFor]="animals">
+                        <mat-icon>{{menu.dsClassIcon}}</mat-icon>&nbsp;
+                        {{menu.dsMenu}}
+                    </button>
+
+                    <mat-menu #animals="matMenu">
+                        <div *ngFor="let menuChild of menu.menuList">
+                            <button mat-menu-item routerLink="{{menuChild.dsRouterLink}}">
+                                <mat-icon>{{menuChild.dsClassIcon}}</mat-icon>&nbsp;
+                                {{menuChild.dsMenu}}
+                            </button>
+                        </div>
+                    </mat-menu>
+
+                </div>
+
+            </mat-nav-list>
+
+        </mat-drawer>
+
+        <mat-drawer-content class="page-container">
+            <router-outlet></router-outlet>
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+</div>
+
+<app-loading></app-loading>

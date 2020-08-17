@@ -1,0 +1,36 @@
+<div class="div-router-outlet">
+    <mat-card class="h-100 mat-card">
+
+        <mat-card-header>
+            <mat-card-title>Perfis</mat-card-title>
+        </mat-card-header>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content>
+            <table class="table-list" mat-table [dataSource]="perfilList">
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Nome</th>
+                    <td mat-cell *matCellDef="let element"> {{element.dsName}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef>Ações</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-button (click)="editPerfil(element)" matTooltip="Editar" matTooltipPosition="above"><mat-icon>edit</mat-icon></button>
+                        <button mat-button (click)="deletePerfil(element)" matTooltip="Remover" matTooltipPosition="above"><mat-icon>delete</mat-icon></button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="columnsPerfil"></tr>
+                <tr mat-row *matRowDef="let row; columns: columnsPerfil;"></tr>
+            </table>
+        </mat-card-content>
+
+    </mat-card>
+
+    <button mat-fab color="primary" class="floating-add-button" (click)="addPerfil()" matTooltip="Novo Perfil" matTooltipPosition="above">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>

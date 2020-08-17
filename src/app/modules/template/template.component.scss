@@ -1,0 +1,83 @@
+@import "../../../styles";
+
+.template {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+mat-toolbar{
+  background-color: $cca-primary-color !important;
+}
+
+mat-drawer-content {
+  padding: 1em 3em;
+  overflow: hidden;
+}
+
+.full-container {
+  flex-grow: 1;
+  height: auto;
+}
+
+.nav-group-title {
+  padding: 16px 0 0 0;
+  font-size: 12px;
+  margin: 0;
+  color: #B3B3B3;
+}
+
+.nav-group-title:first-child{
+  padding-top: 0;
+}
+
+.mat-list-item {
+  color: #4D4D4D;
+  font-size: 16px;
+  padding: 0;
+  margin: 0 0 0 -16px !important;
+
+  &.active {
+    color: $cca-primary-color;
+  }
+}
+
+mat-drawer {
+  border-right: 1px solid rgba(0,0,0,0.1);
+  padding: 1em;
+  min-width: 180px;
+
+  mat-nav-list {
+
+    height: 40px;
+
+    button {
+
+      padding: 0 !important;
+      width: 100%;
+      text-align: initial;
+
+    }
+
+  }
+}
+
+mat-toolbar {
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  z-index: 2;
+  height: 65px;
+}
+
+.page-container {
+  height: calc(100vh - 120px);
+  margin-left: 150px !important;
+}
+
+.fill {
+  flex-grow: 1;
+}
+
+.menu-title {
+  display: flex;
+  height: 64px;
+}

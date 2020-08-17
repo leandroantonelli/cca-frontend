@@ -1,0 +1,54 @@
+<div class="background-login">
+
+  <div class="login-topo">
+    <strong class="logo logo-ciss">CCA - Centro de Controle de Animais</strong>
+  </div>
+
+  <div class="form-login">
+
+    <div class="box-form-login">
+
+      <div>
+        <img src="assets/images/logo.png" alt="logo" class="logo">
+      </div>
+
+      <h2>Olá! vamos começar</h2>
+      <h5 class="font-weight-light">Faça o login para continuar.</h5>
+      <form class="pt-5" (ngSubmit)="doLogin()" [formGroup]="loginForm">
+
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input matInput formControlName="dsEmail" placeholder="Ex. pat@example.com">
+          <mat-error *ngIf="loginForm.controls['dsEmail'].hasError('email') && !loginForm.controls['dsEmail'].hasError('required')">
+            Informe um E-mail válido
+          </mat-error>
+          <mat-error *ngIf="loginForm.controls['dsEmail'].hasError('required')">
+            E-mail é <strong>obrigatória</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" formControlName="dsPassword">
+          <mat-error *ngIf="loginForm.controls['dsPassword'].hasError('required')">
+            Senha é <strong>obrigatória</strong>
+          </mat-error>
+        </mat-form-field>
+
+
+        <div class="pt-5">
+          <button mat-raised-button color="primary">Entrar</button>
+        </div>
+
+        <div class="pt-5">
+          <a href="javascript:(void)" class="auth-link text-gray">Esqueceu sua senha?</a>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+<app-loading></app-loading>

@@ -1,0 +1,7 @@
+<mat-error *ngIf="checkError('required')">{{fieldText}} é obrigatório</mat-error>
+
+<mat-error *ngIf="checkError('minLength')">{{fieldText}} deve ter mais de {{getLength('minLength')}} caracteres</mat-error>
+
+<mat-error *ngIf="checkError('maxLength')">{{fieldText}} deve ter menos de {{getLength('maxLength')}} caracteres </mat-error>
+
+<mat-error *ngIf="checkError('email')">{{fieldText}} é obrigatório</mat-error>

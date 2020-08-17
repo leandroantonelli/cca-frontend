@@ -1,0 +1,37 @@
+.background-login {
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+}
+
+.login-topo {
+  padding: 0 10% 0 10%;
+  height: 80px;
+  background-color: #265d0c;
+  color: white;
+  z-index: 3;
+  display:flex;
+  align-items: center;
+}
+
+.logo {
+  font-family: Nunito, sans-serif !important;
+  font-size: 26px;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center
+}
+
+.box-form-login {
+  text-align: center;
+  width: 350px;
+  height: 400px;
+}
+
+mat-form-field {
+  width: 100%;
+}

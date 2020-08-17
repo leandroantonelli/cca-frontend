@@ -1,0 +1,153 @@
+<div class="div-router-outlet">
+<!--    <form [formGroup]="userFormGroup">-->
+        <mat-card class="h-100 mat-card">
+            <mat-card-header>
+                <mat-card-title>Cadastro de Usuário</mat-card-title>
+            </mat-card-header>
+
+            <mat-divider></mat-divider>
+
+            <mat-card-content>
+
+                <mat-horizontal-stepper #stepper>
+                    <mat-step [stepControl]="userInfoFormGroup">
+                        <form [formGroup]="userInfoFormGroup">
+                            <ng-template matStepLabel>Dados do Usuário</ng-template>
+
+                            <div class="row">
+                                <mat-form-field appearance="outline" class="col-6">
+                                    <mat-label>Nome do Usuário</mat-label>
+                                    <input matInput formControlName="dsName" type="text">
+                                    <mat-error *ngIf="userInfoFormGroup.controls['dsName'].invalid">{{getMessageError(userInfoFormGroup.controls['dsName'])}}</mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" class="col-2">
+                                    <mat-label>CPF</mat-label>
+                                    <input matInput formControlName="dsCpf" type="text" mask="000.000.000-00">
+                                    <mat-error *ngIf="userInfoFormGroup.controls['dsCpf'].invalid">{{getMessageError(userInfoFormGroup.controls['dsCpf'])}}</mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" class="col-4">
+                                    <mat-label>Perfil</mat-label>
+                                    <mat-select placeholder="Perfil" formControlName="idPerfil" [(ngModel)]="perfilSelected">
+                                        <mat-option *ngFor="let perfil of perfilList" [value]="perfil.idPerfil">
+                                            {{perfil.dsName}}
+                                        </mat-option>
+                                    </mat-select>
+<!--                                    <mat-select placeholder="Perfil" formControlName="perfil" [(ngModel)]="userInfoFormGroup.controls.perfil.value">-->
+<!--                                        <mat-select-filter [placeholder]="'Filtrar'" [displayMember]="'dsName'" [noResultsMessage]="'Perfil não encontrado'" [array]="perfilList" (filteredReturn)="filteredPerfil =$event"></mat-select-filter>-->
+<!--                                        <mat-option *ngFor="let item of filteredPerfil" [value]="item">-->
+<!--                                            {{item.dsName}}-->
+<!--                                        </mat-option>-->
+<!--                                    </mat-select>-->
+                                    <mat-error *ngIf="userInfoFormGroup.controls['idPerfil'].invalid">{{getMessageError(userInfoFormGroup.controls['idPerfil'])}}</mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="row">
+                                <mat-form-field appearance="outline" class="col-6">
+                                    <mat-label>E-mail</mat-label>
+                                    <input matInput formControlName="dsEmail" type="text">
+                                    <mat-error *ngIf="userInfoFormGroup.controls['dsEmail'].invalid">{{getMessageError(userInfoFormGroup.controls['dsEmail'])}}</mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" class="col-4">
+                                    <mat-label>Celular</mat-label>
+                                    <input matInput formControlName="dsCellPhone" type="text" mask="(00) 00000-0000">
+                                </mat-form-field>
+
+                                <section class="col-2 form-section-checkbox">
+                                    <mat-slide-toggle formControlName="fgActive">Ativo</mat-slide-toggle>
+                                </section>
+                            </div>
+
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="userAddressFormGroup">
+                        <form [formGroup]="userAddressFormGroup">
+                            <ng-template matStepLabel>Endereço</ng-template>
+
+                            <div class="row">
+                                <mat-form-field appearance="outline" class="col-4">
+                                    <mat-label>CEP</mat-label>
+                                    <input matInput formControlName="dsCep" type="text" mask="00000-000">
+                                    <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="findCep()">
+                                        <mat-icon>search</mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="userAddressFormGroup.controls['dsCep'].invalid">{{getMessageError(userAddressFormGroup.controls['dsCep'])}}</mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" class="col-8">
+                                    <mat-label>Endereço</mat-label>
+                                    <input matInput formControlName="dsAddress" type="text">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="row">
+                                <mat-form-field appearance="outline" class="col-4">
+                                    <mat-label>Número</mat-label>
+                                    <input matInput formControlName="dsNumber" type="text">
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" class="col-4">
+                                    <mat-label>Complemento</mat-label>
+                                    <input matInput formControlName="dsComplement" type="text">
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" class="col-4">
+                                    <mat-label>Bairro</mat-label>
+                                    <input matInput formControlName="dsNeighborhood" type="text">
+                                </mat-form-field>
+
+                            </div>
+
+                            <div class="row">
+
+                                <mat-form-field appearance="outline" class="col-8">
+                                    <mat-label>Cidade</mat-label>
+                                    <input matInput formControlName="dsCity" type="text">
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" class="col-4">
+                                    <mat-label>Estado</mat-label>
+                                    <input matInput formControlName="dsState" type="text">
+                                </mat-form-field>
+                            </div>
+                        </form>
+                    </mat-step>
+
+                    <mat-step [stepControl]="userPasswordFormGroup">
+                        <form [formGroup]="userPasswordFormGroup">
+                            <ng-template matStepLabel>Senha</ng-template>
+
+                            <div class="row">
+
+                                <mat-form-field appearance="outline" class="col-6">
+                                    <mat-label>Senha</mat-label>
+                                    <input matInput formControlName="dsPassword" type="password">
+                                    <mat-error *ngIf="userPasswordFormGroup.controls['dsPassword'].invalid">{{getMessageError(userPasswordFormGroup.controls['dsPassword'])}}</mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" class="col-6">
+                                    <mat-label>Confirmar Senha</mat-label>
+                                    <input matInput formControlName="dsConfirmPassword" type="password">
+                                </mat-form-field>
+
+                            </div>
+                        </form>
+                    </mat-step>
+
+                </mat-horizontal-stepper>
+
+            </mat-card-content>
+
+            <mat-divider></mat-divider>
+
+            <mat-card-footer>
+                <app-buttons-actions-form *ngIf="stepper.selectedIndex === 0" (cancel)="back()" (confirm)="nextStepper(stepper)" labelConfirm="Próximo"></app-buttons-actions-form>
+                <app-buttons-actions-form *ngIf="stepper.selectedIndex === 1" (cancel)="previousStepper(stepper)" (confirm)="nextStepper(stepper)" labelConfirm="Próximo" labelCancel="Anterior"></app-buttons-actions-form>
+                <app-buttons-actions-form *ngIf="stepper.selectedIndex === 2" (cancel)="previousStepper(stepper)" (confirm)="savePerfil()" labelCancel="Anterior" [disabledAction]="userInfoFormGroup.invalid || userAddressFormGroup.invalid || userPasswordFormGroup.invalid"></app-buttons-actions-form>
+            </mat-card-footer>
+        </mat-card>
+<!--    </form>-->
+</div>

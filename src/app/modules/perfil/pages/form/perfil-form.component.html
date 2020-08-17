@@ -1,0 +1,52 @@
+<div class="div-router-outlet">
+    <form [formGroup]="perfilFormGroup">
+        <mat-card class="h-100 mat-card">
+            <mat-card-header>
+                <mat-card-title>Cadastro de Perfil</mat-card-title>
+            </mat-card-header>
+
+            <mat-divider></mat-divider>
+
+            <mat-card-content>
+                <div class="row">
+                    <mat-form-field appearance="outline" class="col-12">
+                        <mat-label>Nome do Perfil</mat-label>
+                        <input matInput formControlName="dsName" type="text">
+                        <mat-error *ngIf="perfilFormGroup.controls['dsName'].invalid">{{getMessageError(perfilFormGroup.controls['dsName'])}}</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="row">
+                    <mat-label class="label-menu-liberados">Menus Liberados</mat-label>
+                </div>
+
+                <div class="row" *ngFor="let menu of menuList">
+                    <div *ngIf="menu.menuList.length === 0">
+                        <mat-checkbox class="checkbox-margin" [checked]="menu.fgChecked" (change)="selectMenu($event.checked, menu)">{{menu.dsMenu}}</mat-checkbox>
+                    </div>
+
+                    <div *ngIf="menu.menuList.length > 0">
+
+                            <mat-checkbox class="checkbox-margin" [checked]="menu.fgChecked" (change)="selectMenu($event.checked, menu)">
+                                {{menu.dsMenu}}
+                            </mat-checkbox>
+                            <ul>
+                                <li *ngFor="let menuChild of menu.menuList">
+                                    <mat-checkbox [checked]="menuChild.fgChecked" (change)="selectMenuChild($event.checked, menuChild, menu)">
+                                        {{menuChild.dsMenu}}
+                                    </mat-checkbox>
+                                </li>
+                            </ul>
+
+                    </div>
+                </div>
+            </mat-card-content>
+
+            <mat-divider></mat-divider>
+
+            <mat-card-footer>
+                <app-buttons-actions-form (cancel)="back()" (confirm)="savePerfil()" [disabledAction]="perfilFormGroup.invalid"></app-buttons-actions-form>
+            </mat-card-footer>
+        </mat-card>
+    </form>
+</div>
